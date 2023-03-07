@@ -1,0 +1,16 @@
+name: Release prod
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  Deploy:
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - id: deploy
+        name: deploy
+        run: |
+          echo "deploy stuff"
