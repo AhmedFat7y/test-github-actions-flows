@@ -6,8 +6,16 @@ on:
       - main
 
 jobs:
-  Deploy:
+  Deploy-Staging:
     environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - id: deploy
+        name: deploy
+        run: |
+          echo "deploy stuff"
+  Deploy-Production:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - id: deploy
