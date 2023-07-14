@@ -8,7 +8,7 @@ on:
 jobs:
   Deploy-Staging:
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-staging
     environment: staging
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
           echo "deploy stuff"
   Deploy-Production:
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-production
     environment: production
     runs-on: ubuntu-latest
     steps:
