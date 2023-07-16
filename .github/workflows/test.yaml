@@ -2,9 +2,6 @@ name: Tests
 
 on:
   push:
-    branches-ignore:
-      - main
-      - production
 
 jobs:
   test:
@@ -13,4 +10,4 @@ jobs:
       - id: test
         name: test
         run: |
-          echo "test stuff"
+          echo ${{ github.event.before }}
