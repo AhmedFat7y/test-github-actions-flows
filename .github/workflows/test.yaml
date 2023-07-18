@@ -2,12 +2,14 @@ name: Tests
 
 on:
   push:
-
+env:
+  test: ${{ fromJson('{"hello": "world"}')["hell"] }}
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - id: test
+        if: env.test && null
         name: test
         run: |
           echo ${{ github.event.before }}
