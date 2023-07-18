@@ -3,17 +3,13 @@ name: Tests
 on:
   push:
 env:
-  map: |
-    {"hello": "world"}
-  test: ${{ fromJson(secrets.HELLO)["hell"] }}'
+  test: ${{ fromJson(secrets.HELLO)[github.ref] }}'
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - id: test
-        if: env.test && fromJson(env.map)["hell"]
+        if: env.test && fromJson(env.secrets.HELLO)["hell"]
         name: test
-        env:
-          test: fromJson(env.map)["hello"]
         run: |
           echo ${{ github.event.before }}
