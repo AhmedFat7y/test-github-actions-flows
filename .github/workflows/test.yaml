@@ -5,13 +5,15 @@ on:
 env:
   map: |
     {"hello": "world"}
-  test: ${{ fromJson(env.map)["hello"] }}
+  test: ${{ fromJson(secrets.HELLO)["hell"] }}'
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - id: test
-        if: env.test && null
+        if: env.test && fromJson(env.map)["hell"]
         name: test
+        env:
+          test: fromJson(env.map)["hello"]
         run: |
           echo ${{ github.event.before }}
