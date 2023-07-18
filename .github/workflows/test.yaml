@@ -2,14 +2,13 @@ name: Tests
 
 on:
   push:
-env:
-  test: ${{ fromJson(secrets.HELLO)[github.ref] }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - id: test
-        if: fromJson(secrets.HELLO)[github.ref]
+        if: fromJson(vars.HELLO)[github.ref]
         name: test
         run: |
           echo ${{ github.event.before }}
