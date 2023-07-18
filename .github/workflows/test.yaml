@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: test
-        if: env.test && fromJson(env.secrets.HELLO)[github.ref]
+        if: fromJson(env.secrets.HELLO)[github.ref]
         name: test
         run: |
           echo ${{ github.event.before }}
