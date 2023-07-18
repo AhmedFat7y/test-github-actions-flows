@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    if: ${{ fromJson(vars.HELLO)[github.ref] != null }}
+    if: ${{ fromJson(vars.HELLO)[github.ref_name] != null }}
     runs-on: ubuntu-latest
     steps:
       - id: test
