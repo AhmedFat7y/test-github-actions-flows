@@ -5,10 +5,10 @@ on:
 
 jobs:
   test:
+    if: ${{ fromJson(vars.HELLO)[github.ref] != null }}
     runs-on: ubuntu-latest
     steps:
       - id: test
-        if: fromJson(vars.HELLO)[github.ref]
         name: test
         run: |
           echo ${{ github.event.before }}
