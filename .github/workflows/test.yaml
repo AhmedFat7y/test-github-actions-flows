@@ -3,7 +3,9 @@ name: Tests
 on:
   push:
 env:
-  test: ${{ fromJson('{"hello": "world"}')["hell"] }}
+  map: |
+    {"hello": "world"}
+  test: ${{ fromJson(env.map)["hello"] }}
 jobs:
   test:
     runs-on: ubuntu-latest
