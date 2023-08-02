@@ -17,7 +17,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            octokit.rest.repos.createCommitStatus({
+            github.rest.repos.createCommitStatus({
               owner: context.repository.name,
               repo: context.repository.owner.login,
               sha: context.sha,
