@@ -3,7 +3,9 @@ name: Tests
 on:
   push:
   pull_request:
-    
+
+permissions:
+  statuses: write
 
 jobs:
   test:
@@ -17,4 +19,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(JSON.stringify(context))
+            github.rest.repos.createCommitStatus({
+              owner: context.payload.repository.name,
+              repo: context.payload.repository.owner.login,
+              sha: context.sha,
+              state: 'success',
+              description: 'dummy commit status for merge group',
+              context: 'merge_group'
+            });
