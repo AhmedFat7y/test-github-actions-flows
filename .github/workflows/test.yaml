@@ -17,4 +17,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(JSON.stringify(context))
+            octokit.rest.repos.createCommitStatus({
+              owner: context.repository.name,
+              repo: context.repository.owner.login,
+              sha: context.sha,
+              state: 'success',
+              description: 'dummy commit status for merge group',
+              context: 'merge_group'
+            });
