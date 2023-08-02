@@ -3,7 +3,9 @@ name: Tests
 on:
   push:
   pull_request:
-    
+
+permissions:
+  statuses: write
 
 jobs:
   test:
