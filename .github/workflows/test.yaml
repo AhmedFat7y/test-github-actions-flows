@@ -22,7 +22,7 @@ jobs:
             github.rest.repos.createCommitStatus({
               owner: context.payload.repository.name,
               repo: context.payload.repository.owner.login,
-              sha: context.merge_group.head_sha,
+              sha: context.payload.merge_group.head_sha,
               state: 'success',
               description: 'dummy commit status for merge group',
               context: 'merge_group'
