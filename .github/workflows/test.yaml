@@ -15,7 +15,7 @@ jobs:
         name: test
         run: |
           echo ${{ github.event.before }}
-          echo "hello=true" >> "$GITHUB_OUTPUT"
+          echo "hello=false" >> "$GITHUB_OUTPUT"
       - name: Create Atlantis Commit Status
         if: ${{ steps.test.outputs.hello == 'true' }}
         uses: actions/github-script@v6
